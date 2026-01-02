@@ -5,21 +5,26 @@ const INCREMENT_COUNT = 'increment';
 const SET_VALUE_TO_ADD = 'change_value_to_add';
 
 const reducer = (state, action) => {
-	if(action.type === INCREMENT_COUNT) {
-		return {
-			...state,
-			count: state.count + 1
-		};
-	}
+	switch(action.type) {
+		case INCREMENT_COUNT:
+			return {
+				...state,
+				count: state.count + 1
+			};
 
-	if(action.type === SET_VALUE_TO_ADD) {
-		return {
-			...state,
-			valueToAdd: action.payload
-		};
-	}
+		case SET_VALUE_TO_ADD:
+			return {
+				...state,
+				valueToAdd: action.payload
+			};
 
-	return state;
+		default:
+			// alternate way to habdle default case
+			// 1. throw an error
+			// throw new Error('unexpected action type: ' + action.type);
+			// 2. return the current state
+			return state;
+	}
 }
 
 function CounterPage({ initialCount }) {
