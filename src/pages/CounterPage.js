@@ -1,5 +1,4 @@
 import { useReducer } from 'react';
-import Button from '../components/Button';
 
 // Constant action types
 const INCREMENT_COUNT = 'increment';
@@ -44,9 +43,6 @@ const reducer = (state, action) => {
 }
 
 function CounterPage({ initialCount }) {
-	// const [count, setCount] = useState(initialCount);
-	// const [valueToAdd, setValueToAdd] = useState(0);
-
 	const [state, dispatch] = useReducer(reducer, {
 		count: initialCount,
 		valueToAdd: 0
@@ -82,10 +78,10 @@ function CounterPage({ initialCount }) {
 
 	return (
 		<div>
-			<h1 className="text-lg">Count is {state.count}</h1>
-			<div className="flex flex-row">
-				<Button onClick={increment}>Increment</Button>
-				<Button onClick={decrement}>Decrement</Button>
+			<h1>Count is {state.count}</h1>
+			<div>
+				<button onClick={increment}>Increment</button>
+				<button onClick={decrement}>Decrement</button>
 			</div>
 
 			<form onSubmit={handleSubmit}>
@@ -94,9 +90,8 @@ function CounterPage({ initialCount }) {
 					value={state.valueToAdd || ""}
 					onChange={handleChange}
 					type="number"
-					className="p-1 m-3 bg-gray-50 border border-gray-300"
 				/>
-				<Button>Add it!</Button>
+				<button>Add it!</button>
 			</form>
 		</div>
 	);
